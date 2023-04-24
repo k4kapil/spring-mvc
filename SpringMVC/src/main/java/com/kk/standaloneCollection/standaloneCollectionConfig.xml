@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:p="http://www.springframework.org/schema/p"
+ xmlns:util="http://www.springframework.org/schema/util"
+ xmlns:c="http://www.springframework.org/schema/c"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd
+  http://www.springframework.org/schema/util
+  http://www.springframework.org/schema/util/spring-util.xsd">
+ 
+ <context:annotation-config />
+ 	
+ 		<!-- Standlone List -->
+
+ <util:list list-class="java.util.LinkedList" id="myFriends">
+ <value>Kapil</value>
+ <value>Rahul</value>
+ <value>Sunil</value>
+ <value>Geeta</value>
+ <value>Anjali</value>
+ </util:list>
+ 
+ <util:list list-class="java.util.Vector" id="myFriends1">
+ <value>Sumit</value>
+ <value>Raman</value>
+ <value>Mohit</value>
+ <value>Suman</value>
+ <value>Kalo</value>
+ </util:list>
+ 
+			 <!-- Standlone HashMap -->
+ <util:map map-class="java.util.HashMap" id="fees">
+ 	<entry key="Java Core" value="2000" />
+ 	<entry key="Hibernate framework" value="3000" />
+ 	<entry key="Spring framework" value="5000" />	
+ </util:map>
+ 
+ 			<!-- Standlone TreeMap -->
+ <util:map map-class="java.util.TreeMap" id="tree">
+ 	<entry key="Spring boot" value="4000" />
+ 	<entry key="Hibernate framework" value="3000" />
+ 	<entry key="Angular" value="5000" />	
+ </util:map>
+ 
+ 			<!-- Standlone Properties -->
+ <util:properties id="dbConncetion">
+ 	<prop key="db.driver">oracle.jdbc.driver.OracleDriver</prop>
+ 	<prop key="db.url">jdbc:oracle:thin:@localhost:1521:xe"</prop>
+ 	<prop key="username">System</prop>
+ 	<prop key="password">kap1234</prop>
+ </util:properties>
+ 
+ 
+ <bean class="com.kk.standaloneCollection.Person" name="person1">
+ 		<property name="friends" ref="myFriends" /> 
+ </bean> 
+ 
+ <bean class="com.kk.standaloneCollection.Person" name="person2">
+ 		<property name="friends" ref="myFriends1" /> 
+ </bean>	
+ 	
+ <bean class="com.kk.standaloneCollection.Person" name="person3">
+ 		<property name="friends" ref="myFriends" /> 
+ </bean>
+ 		
+<bean class="com.kk.standaloneCollection.Person" name="person4">
+ 		<property name="friends" ref="myFriends1" />  
+ 		<property name="feeStructure" ref="fees" />		
+</bean>
+
+<bean class="com.kk.standaloneCollection.Person" name="person5">
+ 		<property name="friends" ref="myFriends1" />  
+ 		<property name="feeStructure" ref="tree" />	
+</bean>
+		
+<bean class="com.kk.standaloneCollection.Person" name="person6">
+ 		<property name="friends" ref="myFriends" />  
+ 		<property name="feeStructure" ref="tree" />	
+ 		<property name="properties" ref="dbConncetion" /> 			
+</bean>
+</beans>
